@@ -13,7 +13,7 @@ import api from './api';
 
 const app = express();
 dotenv.config();
-const PORT = process.env.port;
+const PORT = process.env.PORT;
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')
