@@ -6,6 +6,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 
+import {client} from './db';
+
 import { Urls } from "./api/urls/schema";
 import { getUrl } from './api/urls/service';
 
@@ -39,6 +41,12 @@ app.get('/:shorten', async (req,res) => {
 
 app.use('/api', api);
 
-app.listen(PORT,()=>{
-  console.log('Listening on port:', PORT);
+client.connect(err => {
+  if(err){
+    console.log(err);
+  }
+  app.listen(PORT,()=>{
+    console.log('Listening on port:', PORT);
+  })
+
 })
